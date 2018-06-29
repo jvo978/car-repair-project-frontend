@@ -6,32 +6,66 @@
 
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
+      <img alt="" src="assets/images/engine.jpg">
       <h1>Auto Repair Tracker</h1>
+      <!-- <form id='sign-up-form'> -->
+        <!-- <input name='credentials[email]' type='email' placeholder='Email'/> -->
+        <!-- <input name='credentials[password]' type='password' placeholder='Password'/> -->
+        <!-- <input name='credentials[password_confirmation]' type='password' placeholder='Password Confirmation'/>
+        <button type='submit' class="btn btn-primary">Sign Up</button> -->
+      <!-- </form> -->
+    <form id='sign-up-form'>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input name='credentials[email]' type="email" class="form-control" placeholder="Enter Email">
+      </div>
 
-      <form id='sign-up-form'>
-        <input name='credentials[email]' type='email' placeholder='Email'/>
-        <input name='credentials[password]' type='password' placeholder='Password'/>
-        <input name='credentials[password_confirmation]' type='password' placeholder='Password Confirmation'/>
-        <button type='submit'>Sign Up</button>
-      </form>
+      <div class="form-group">
+        <label>Password</label>
+        <input name='credentials[password]' type="password" class="form-control" placeholder="Password">
+      </div>
+
+      <div class="form-group">
+        <label>Password Confirmation</label>
+        <input name='credentials[password_confirmation]' type="password" class="form-control" placeholder="Password Confirmation">
+      </div>
+      <button type='submit' class="btn btn-secondary">Sign Up</button>
+    </form>
 
       <form id='sign-in-form'>
-          <input name='credentials[email]' type='email' placeholder='Email'/>
-          <input name='credentials[password]' type='password' placeholder='Password'/>
-          <button type='submit'>Sign In</button>
-          <button id='sign-out'>Sign Out</button>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input name='credentials[email]' type="email" class="form-control" placeholder="Enter Email">
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input name='credentials[password]' type="password" class="form-control" placeholder="Password">
+        </div>
+        <button class="btn btn-secondary" type='submit'>Sign In</button>
+        <button class="btn btn-secondary">Sign Out</button>
       </form>
 
-      <form id='change-password-form'>
-        <input name='passwords[old]' type='password' placeholder='Old Password'/>
-        <input name='passwords[new]' type='password' placeholder='New Password'/>
-        <button type='submit'>Change Password</button>
-      </form>
+          <!-- <input name='credentials[email]' type='email' placeholder='Email'/>
+          <input name='credentials[password]' type='password' placeholder='Password'/>
+          <button class="btn btn-primary" type='submit'>Sign In</button>
+          <button class="btn btn-primary" id='sign-out'>Sign Out</button> -->
+          <form id='change-password-form'>
+            <div class="form-group">
+              <label>Old Password</label>
+              <input name='passwords[old]' type="password" class="form-control" placeholder="Old Password">
+            </div>
+
+            <div class="form-group">
+              <label>New Password</label>
+              <input name='passwords[new]' type="password" class="form-control" placeholder="New Password">
+            </div>
+            <button class="btn btn-secondary" type='submit'>Change Password</button>
+          </form>
     </body>
 </html>
