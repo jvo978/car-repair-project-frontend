@@ -48,8 +48,37 @@
           <input name='credentials[password]' type="password" class="form-control" placeholder="Password">
         </div>
         <button class="btn btn-secondary" type='submit'>Sign In</button>
-        <button class="btn btn-secondary">Sign Out</button>
+        <button id='sign-out' class="btn btn-secondary">Sign Out</button>
       </form>
+
+      <form id='create-car-form'>
+        <div class="form-group">
+          <label>Car Model</label>
+          <input name='car[model]' type="text" class="form-control" placeholder="Model">
+        </div>
+
+        <div class="form-group">
+          <label>Car Make</label>
+          <input name='car[make]' type="text" class="form-control" placeholder="Make">
+        </div>
+
+        <div class="form-group">
+          <label>Car Year</label>
+          <input name='car[year]' type="number" class="form-control" placeholder="Year">
+        </div>
+
+        <div class="form-group">
+          <label>Car Color</label>
+          <input name='car[color]' type="text" class="form-control" placeholder="Color">
+        </div>
+
+        <div class="form-group">
+          <label>Car Problem</label>
+          <input name='car[problem]' type="text" class="form-control" placeholder="Problem">
+        </div>
+        <button class="btn btn-secondary" type='submit'>Add Car</button>
+      </form>
+
 
           <!-- <input name='credentials[email]' type='email' placeholder='Email'/>
           <input name='credentials[password]' type='password' placeholder='Password'/>
@@ -67,5 +96,7 @@
             </div>
             <button class="btn btn-secondary" type='submit'>Change Password</button>
           </form>
+          <button id='show-cars' class="btn btn-secondary">Show Cars</button>
+          <div id="list"></div>
     </body>
 </html>
