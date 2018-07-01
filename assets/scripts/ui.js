@@ -1,18 +1,30 @@
 const store = require('./store')
+const api = require('./api')
 
 const showCarsSuccess = function (response) {
   console.log(response)
   $('#list').html('')
   for (let i = 0; i < response.cars.length; i++) {
-    const displayMessage = (`<div style='clear:left; border: solid black 2px; display: inline-block; padding: 10px; margin: 5px;'><p>Car Id: ${response.cars[i].id}</p>
+    const displayMessage = (`<div id='car-${response.cars[i].id}' style='clear:left; border: solid black 2px; display: inline-block; padding: 10px; margin: 5px;'><p>Car Id: ${response.cars[i].id}</p>
                              <p>Car Model: ${response.cars[i].model}</p>
                              <p>Car Make: ${response.cars[i].make}</p>
                              <p>Car Model: ${response.cars[i].year}</p>
                              <p>Car Color: ${response.cars[i].color}</p>
                              <p>Car Problem: ${response.cars[i].problem}</p>
-                             <p><button id='${response.cars[i].id}'>Delete</button></div>`)
+                             <button class="remove-car" id='${response.cars[i].id}'>Delete</button>
+                             <button id='${response.cars[i].id}'>Update</button>
+                             </div>`)
     $('#list').append(displayMessage)
   }
+  $('.remove-car').on('click', onDeleteCar)
+}
+
+const onDeleteCar = function (event) {
+  event.preventDefault()
+  const carID = event.target.id
+  api.deleteCar(carID)
+    .then(deleteCarSuccess(carID))
+    .catch(deleteCarFailure)
 }
 
 const showCarsFailure = function (response) {
@@ -22,11 +34,21 @@ const showCarsFailure = function (response) {
 
 const createCarSuccess = function (response) {
   console.log(response)
-  console.log('Create Car Success')
+  const displayMessage = (`<div id='car-${response.car.id}' style='clear:left; border: solid black 2px; display: inline-block; padding: 10px; margin: 5px;'><p>Car Id: ${response.car.id}</p>
+                            <p>Car Model: ${response.car.model}</p>
+                             <p>Car Make: ${response.car.make}</p>
+                             <p>Car Model: ${response.car.year}</p>
+                             <p>Car Color: ${response.car.color}</p>
+                             <p>Car Problem: ${response.car.problem}</p>
+                             <button class="remove-car" id='${response.car.id}'>Delete</button>
+                             <button id='${response.car.id}'>Update</button>
+                             </div>`)
+  $('#list').append(displayMessage)
+  $('#status-message').html('Car successfully added')
 }
 
 const createCarFailure = function (response) {
-  console.log('Create Car Failure')
+  $('#status-message').html('Car successfully added')
 }
 
 const signUpSuccess = function (response) {
@@ -90,6 +112,13 @@ const signOutSuccess = function (response) {
 const signOutFailure = function (response) {
   $('#status-message').html('Sign Out Failure')
   // $('#messageStatus').html('Log off unsuccessful')
+}
+
+const deleteCarSuccess = function (carID) {
+  $('#car-' + carID).remove()
+}
+
+const deleteCarFailure = function () {
 }
 
 module.exports = {

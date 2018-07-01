@@ -1,6 +1,13 @@
 const getFormFields = require('../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
+//
+// const onDeleteCar = function (event) {
+//   console.log(event.target.id)
+//   event.preventDefault()
+//   const carID = event.target.id
+//   api.deleteCar(carID)
+// }
 
 const onShowCars = function (event) {
   event.preventDefault()

@@ -1,6 +1,16 @@
 const store = require('./store')
 const config = require('./config')
 
+const deleteCar = function (carID) {
+  return $.ajax({
+    method: 'DELETE',
+    url: config.apiUrl + '/cars/' + carID,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const showCars = function (data) {
   return $.ajax({
     method: 'GET',
@@ -66,5 +76,6 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
-  showCars
+  showCars,
+  deleteCar
 }
