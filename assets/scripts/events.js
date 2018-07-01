@@ -9,6 +9,8 @@ const onShowCars = function (event) {
   api.showCars(data)
     .then(ui.showCarsSuccess)
     .catch(ui.showCarsFailure)
+  document.getElementById('change-password-form').reset()
+  document.getElementById('create-car-form').reset()
 }
 
 const onCreateCar = function (event) {
@@ -18,6 +20,8 @@ const onCreateCar = function (event) {
   api.createCar(data)
     .then(ui.createCarSuccess)
     .catch(ui.createCarFailure)
+  document.getElementById('create-car-form').reset()
+  document.getElementById('change-password-form').reset()
 }
 
 const onSignUp = function (event) {
@@ -27,9 +31,10 @@ const onSignUp = function (event) {
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
-
-  // document.getElementById('sign-up-form').reset()
-  // document.getElementById('sign-in-form').reset()
+  document.getElementById('sign-up-form').reset()
+  document.getElementById('sign-in-form').reset()
+  document.getElementById('change-password-form').reset()
+  document.getElementById('create-car-form').reset()
 }
 
 const onSignIn = function (event) {
@@ -39,10 +44,10 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
-
-  // document.getElementById('sign-in-form').reset()
-  // document.getElementById('change-password-form').reset()
-  // document.getElementById('sign-up-form').reset()
+  document.getElementById('sign-up-form').reset()
+  document.getElementById('sign-in-form').reset()
+  document.getElementById('change-password-form').reset()
+  document.getElementById('create-car-form').reset()
 }
 
 const onChangePassword = function (event) {

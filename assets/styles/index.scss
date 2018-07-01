@@ -6,19 +6,17 @@ $black: #000;
 $white: #fff;
 
 form {
+  background-color: $light-blue;
   border: solid $black 2px;
-  // display: inline-block;
-  float: left;
-  margin: 10px;
+  margin: 0 auto 10px;
   padding: 10px;
+  width: 20%;
 }
 
-img {
-  border: solid $white 2px;
-  width: 58%;
+button {
+  margin: 4px;
 }
 
 body {
-  background-color: $light-blue;
-  margin: 0 auto;
+  text-align: center;
 }
