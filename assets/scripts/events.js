@@ -9,6 +9,15 @@ const ui = require('./ui')
 //   api.deleteCar(carID)
 // }
 
+const onUpdateCar = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.updateCar(data)
+    .then(ui.updateCarSuccess)
+    .catch(ui.updateCarFailure)
+  document.getElementById('create-car-form').reset()
+}
+
 const onShowCars = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -23,7 +32,6 @@ const onShowCars = function (event) {
 const onCreateCar = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   api.createCar(data)
     .then(ui.createCarSuccess)
     .catch(ui.createCarFailure)
@@ -84,5 +92,6 @@ module.exports = {
   onChangePassword,
   onSignOut,
   onCreateCar,
-  onShowCars
+  onShowCars,
+  onUpdateCar
 }

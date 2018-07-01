@@ -1,9 +1,30 @@
 const store = require('./store')
 const config = require('./config')
 
+const updateCar = function (data) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/cars/' + data.car.carID,
+    data: data,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const deleteCar = function (carID) {
   return $.ajax({
     method: 'DELETE',
+    url: config.apiUrl + '/cars/' + carID,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const showCar = function (carID) {
+  return $.ajax({
+    method: 'GET',
     url: config.apiUrl + '/cars/' + carID,
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -77,5 +98,7 @@ module.exports = {
   changePassword,
   signOut,
   showCars,
-  deleteCar
+  deleteCar,
+  showCar,
+  updateCar
 }

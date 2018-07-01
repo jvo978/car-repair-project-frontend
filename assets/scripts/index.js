@@ -13,4 +13,5 @@ $(() => {
   $('#sign-out').on('click', events.onSignOut)
   $('#create-car-form').on('submit', events.onCreateCar)
   $('#show-cars').on('click', events.onShowCars)
+  $('#update-car-form').on('submit', events.onUpdateCar)
 })

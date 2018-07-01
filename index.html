@@ -74,6 +74,38 @@
         <button style="display:none;" id='show-cars' class="btn btn-secondary">Show Cars</button>
       </form>
 
+      <form style="display:none;" id='update-car-form'>
+        <div class="form-group">
+          <label>Car Model</label>
+          <input id='model' name='car[model]' type="text" class="form-control" placeholder="Model" required>
+        </div>
+
+        <div class="form-group">
+          <label>Car Make</label>
+          <input id='make' name='car[make]' type="text" class="form-control" placeholder="Make" required>
+        </div>
+
+        <div class="form-group">
+          <label>Car Year</label>
+          <input id='year' name='car[year]' type="number" class="form-control" placeholder="Year" min=1980 max=2018>
+        </div>
+
+        <div class="form-group">
+          <label>Car Color</label>
+          <input id='color' name='car[color]' type="text" class="form-control" placeholder="Color" required>
+        </div>
+
+        <div class="form-group">
+          <label>Car Problem</label>
+          <input id='problem' name='car[problem]' type="text" class="form-control" placeholder="Problem" required>
+        </div>
+
+        <div class="form-group">
+          <input id='carID' name='car[carID]' type="hidden" class="form-control">
+        </div>
+        <button class="btn btn-secondary" type='submit'>Update Car</button>
+      </form>
+
           <form style="display:none;" id='change-password-form'>
             <div class="form-group">
               <label>Old Password</label>
