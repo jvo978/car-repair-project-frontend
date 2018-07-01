@@ -41,7 +41,6 @@ const showCarsSuccess = function (response) {
 
 const onShowCar = function (event) {
   event.preventDefault()
-  console.log(event)
   const carID = event.target.id
   api.showCar(carID)
     .then(showCarSuccess)
@@ -70,12 +69,10 @@ const showCarFailure = function (response) {
 }
 
 const showCarsFailure = function (response) {
-  console.log(response)
-  console.log('Fail')
+
 }
 
 const createCarSuccess = function (response) {
-  console.log(response)
   const displayMessage = (`<div id='car-${response.car.id}' style='clear:left; border: solid black 2px; display: inline-block; padding: 10px; margin: 5px;'><p>Car ID: ${response.car.id}</p>
                             <p>Car Model: ${response.car.model}</p>
                              <p>Car Make: ${response.car.make}</p>
@@ -122,14 +119,11 @@ const signInFailure = function (response) {
 
 const changePasswordSuccess = function (response) {
   console.log('Change Password Success')
-  console.log(response)
   // $('#messageStatus').html('Change Password successful')
   // $('#second-message').html('')
 }
 
 const changePasswordFailure = function (response) {
-  console.log('Change Password Failure')
-  console.log(response)
   // $('#messageStatus').html('Change Password Unsuccessful')
 }
 

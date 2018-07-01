@@ -1,13 +1,6 @@
 const getFormFields = require('../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
-//
-// const onDeleteCar = function (event) {
-//   console.log(event.target.id)
-//   event.preventDefault()
-//   const carID = event.target.id
-//   api.deleteCar(carID)
-// }
 
 const onUpdateCar = function (event) {
   event.preventDefault()
@@ -72,8 +65,6 @@ const onChangePassword = function (event) {
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
-
-  // document.getElementById('change-password-form').reset()
 }
 
 const onSignOut = function (event) {
@@ -82,8 +73,6 @@ const onSignOut = function (event) {
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
-  // document.getElementById('change-password-form').reset()
-  // document.getElementById('sign-up-form').reset()
 }
 
 module.exports = {
