@@ -14,4 +14,8 @@ $(() => {
   $('#create-car-form').on('submit', events.onCreateCar)
   $('#show-cars').on('click', events.onShowCars)
   $('#update-car-form').on('submit', events.onUpdateCar)
-})
+  $('#sign-up-link').on('click', function () {
+    $('#sign-up-form').show()
+  })
+}
+)

@@ -9,6 +9,8 @@ const onUpdateCar = function (event) {
     .then(ui.updateCarSuccess)
     .catch(ui.updateCarFailure)
   document.getElementById('create-car-form').reset()
+  document.getElementById('change-password-form').reset()
+  document.getElementById('update-car-form').reset()
 }
 
 const onShowCars = function (event) {
@@ -35,7 +37,6 @@ const onCreateCar = function (event) {
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -65,6 +66,10 @@ const onChangePassword = function (event) {
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
+
+  document.getElementById('change-password-form').reset()
+  document.getElementById('create-car-form').reset()
+  document.getElementById('update-car-form').reset()
 }
 
 const onSignOut = function (event) {
@@ -73,6 +78,7 @@ const onSignOut = function (event) {
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
+  document.getElementById('update-car-form').reset()
 }
 
 module.exports = {

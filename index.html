@@ -3,7 +3,6 @@
     <head>
       <title>Auto Repair Tracker</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
       <!-- Do not add `script` tags-->
@@ -11,8 +10,18 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
+      <div class="topnav"> Auto Repair Tracker </div>
+    <div class=nav-bar>
+      <ul>
+        <li><a style='display:none;' id='sign-up-link'>Sign Up</a></li>
+        <li><a style='display:none;' id="sign-in-link">Sign In</a></li>
+        <li><a style='display:none;' id="sign-out">Sign Out</a></li>
+        <li><a style='display:none;' id='show-cars'>My Cars</a></li>
+      </ul>
+    </div>
       <!-- <img alt="" src="assets/images/engine.jpg"> -->
-      <div id='status-message'></div>
+<!-- <div id='status-message' class=message></div> -->
+<div id='status-message' class=message></div>
     <form id='sign-up-form'>
       <div class="form-group">
         <label>Email Address</label>
@@ -28,7 +37,7 @@
         <label>Password Confirmation</label>
         <input name='credentials[password_confirmation]' type="password" class="form-control" placeholder="Password Confirmation">
       </div>
-      <button type='submit' class="btn btn-secondary">Sign Up</button>
+      <button type='submit' class="btn btn-primary">Sign Up</button>
     </form>
 
       <form id='sign-in-form'>
@@ -41,7 +50,7 @@
           <label>Password</label>
           <input name='credentials[password]' type="password" class="form-control" placeholder="Password">
         </div>
-        <button class="btn btn-secondary" type='submit'>Sign In</button>
+        <button class="btn btn-primary" type='submit'>Sign In</button>
       </form>
 
       <form style="display:none;" id='create-car-form'>
@@ -69,8 +78,7 @@
           <label>Car Problem</label>
           <input name='car[problem]' type="text" class="form-control" placeholder="Problem" required>
         </div>
-        <button class="btn btn-secondary" type='submit'>Add Car</button>
-        <button style="display:none;" id='show-cars' class="btn btn-secondary">Show Cars</button>
+        <button class="btn btn-primary" type='submit'>Add Car</button>
       </form>
 
       <form style="display:none;" id='update-car-form'>
@@ -102,7 +110,7 @@
         <div class="form-group">
           <input id='carID' name='car[carID]' type="hidden" class="form-control">
         </div>
-        <button class="btn btn-secondary" type='submit'>Update Car</button>
+        <button class="btn btn-primary" type='submit'>Update Car</button>
       </form>
 
           <form style="display:none;" id='change-password-form'>
@@ -115,10 +123,9 @@
               <label>New Password</label>
               <input name='passwords[new]' type="password" class="form-control" placeholder="New Password">
             </div>
-            <button class="btn btn-secondary" type='submit'>Change Password</button>
+            <button class="btn btn-primary" type='submit'>Change Password</button>
             <br />
-            <button style="display:none;" id='sign-out' class="btn btn-secondary">Sign Out</button>
           </form>
-          <div id="list"></div>
+          <div class=row id="list"></div>
     </body>
 </html>

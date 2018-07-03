@@ -4,13 +4,80 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 $light-blue: #477dba;
 $black: #000;
 $white: #fff;
+$gray: #d3d3d3;
+$blueflame: #3e65c0;
+$rust: #b7410e;
+$dark-gray: #333;
+
+.nav-bar {
+  background-color: $dark-gray;
+  // border-bottom: solid 2px $white;
+  height: 45px;
+  margin-bottom: 10px;
+}
+
+.message {
+  color: $black;
+  float: left;
+  font-size: 25px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+li {
+  float: right;
+}
+
+a {
+  color: $white;
+  display: block;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $gray;
+    text-decoration: none;
+  }
+}
+//
+// a &:hover {
+//   background-color: $black;
+// }
+
+.topnav {
+  background-color: $black;
+  color: $light-blue;
+  font-size: 50px;
+  height: 70px;
+  letter-spacing: 5px;
+  overflow: hidden;
+}
+
+label {
+  color: $gray;
+}
+//
+// .modal-body {
+//   height: 100px;
+// }
 
 form {
-  background-color: $light-blue;
-  border: solid $black 2px;
+  background-color: $black;
+  border: solid $rust 4px;
+  border-radius: 10px;
   margin: 0 auto 10px;
   padding: 10px;
   width: 20%;
+}
+
+input {
+  text-align: center;
 }
 
 button {
@@ -18,5 +85,12 @@ button {
 }
 
 body {
+  // background: url('../../assets/images/engine.jpg');
+  // background-repeat: no-repeat;
+  // background-size: cover;
   text-align: center;
 }
+//
+// input {
+//   background-color: $blueflame;
+// }
