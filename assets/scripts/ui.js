@@ -2,46 +2,45 @@ const store = require('./store')
 const api = require('./api')
 
 const updateCarSuccess = function (response) {
-  $('#status-message').html('Car updated successfully')
-  $('#create-car-form').show()
+  $('#status-message').html('Car successfully updated')
   $('#update-car-form').hide()
-  $('#create-car-form').show()
-  $('#update-car-form').hide()
-
-  const updatedCar = (`<p><b>Car ID:</b> ${response.car.id}</p>
-    <p><b>Car Model:</b> ${response.car.model}</p>
-    <p><b>Car Make:</b> ${response.car.make}</p>
-    <p><b>Car Year:</b> ${response.car.year}</p>
-    <p><b>Car Color:</b> ${response.car.color}</p>
-    <p><b>Car Problem:</b> ${response.car.problem}</p>
+  $('#create-car-form').hide()
+  const updatedCar = (`<p><b>Car ID:</b>${response.car.id}</p>
+    <p><b>Car Model:</b>${response.car.model}</p>
+    <p><b>Car Make:</b>${response.car.make}</p>
+    <p><b>Car Model:</b>${response.car.year}</p>
+    <p><b>Car Color:</b>${response.car.color}</p>
+    <p><b>Car Problem:</b>${response.car.problem}</p>
     <button class="remove-car btn btn-primary" id='${response.car.id}'>Delete</button>
-    <button class="update-car btn btn-primary" id='${response.car.id}'>Edit</button>`)
-  $('#car-' + response.car.id).html(updatedCar)
+    <button class="update-car btn btn-primary" id='${response.car.id}'>Update</button>`)
+  const carUpdated = $('#car-' + response.car.id).html(updatedCar)
+  $('#list').append(carUpdated)
   $('.remove-car').on('click', onDeleteCar)
   $('.update-car').on('click', onShowCar)
 }
 
 const updateCarFailure = function (response) {
-  $('#status-message').html('Car update failure')
+  $('#status-message').html('Unable to update car')
 }
 
 const showCarsSuccess = function (response) {
   $('#list').html('')
-  $('#status-message').html('Your inventory shown below')
   for (let i = 0; i < response.cars.length; i++) {
-    const displayMessage = (`<div id='car-${response.cars[i].id}' style='clear:left; background-color: $black; border: solid black 2px; display: inline-block; padding: 10px; margin: 5px;'><p><b>Car ID:</b> ${response.cars[i].id}</p>
-                             <p><b>Car Model:</b> ${response.cars[i].model}</p>
-                             <p><b>Car Make:</b> ${response.cars[i].make}</p>
-                             <p><b>Car Year:</b> ${response.cars[i].year}</p>
-                             <p><b>Car Color:</b> ${response.cars[i].color}</p>
-                             <p><b>Car Problem:</b> ${response.cars[i].problem}</p>
+    const displayMessage = (`<div id='car-${response.cars[i].id}' style='clear:left; border: solid black 2px; display: inline-block; padding: 10px; margin: 5px;'><p><b>Car ID:</b>${response.cars[i].id}</p>
+                             <p><b>Car Model:</b>${response.cars[i].model}</p>
+                             <p><b>Car Make:</b>${response.cars[i].make}</p>
+                             <p><b>Car Year:</b>${response.cars[i].year}</p>
+                             <p><b>Car Color:</b>${response.cars[i].color}</p>
+                             <p><b>Car Problem:</b>${response.cars[i].problem}</p>
                              <button class="remove-car btn btn-primary" id='${response.cars[i].id}'>Delete</button>
-                             <button class="update-car btn btn-primary" id='${response.cars[i].id}'>Edit</button>
+                             <button class="update-car btn btn-primary" id='${response.cars[i].id}'>Update</button>
                              </div>`)
     $('#list').append(displayMessage)
   }
   $('.remove-car').on('click', onDeleteCar)
   $('.update-car').on('click', onShowCar)
+  $('#change-password-form').hide()
+  $('#create-car-form').hide()
 }
 
 const onShowCar = function (event) {
@@ -50,9 +49,6 @@ const onShowCar = function (event) {
   api.showCar(carID)
     .then(showCarSuccess)
     .catch(showCarFailure)
-  document.getElementById('change-password-form').reset()
-  document.getElementById('create-car-form').reset()
-  document.getElementById('update-car-form').reset()
 }
 
 const onDeleteCar = function (event) {
@@ -67,8 +63,7 @@ const onDeleteCar = function (event) {
 }
 
 const showCarSuccess = function (response) {
-  $('#list').html('')
-  $('#status-message').html('Edit your car in the form')
+  $('#status-message').html('Update your car in the form')
   $('#create-car-form').hide()
   $('#update-car-form').show()
   $('#model').val(response.car.model)
@@ -77,15 +72,16 @@ const showCarSuccess = function (response) {
   $('#color').val(response.car.color)
   $('#problem').val(response.car.problem)
   $('#carID').val(response.car.id)
+  $('#list').html('')
 }
 
 const showCarFailure = function (response) {
+  $('#status-message').html('Unable to update car')
 }
 
 const showCarsFailure = function (response) {
-
+  $('#status-message').html('Could not show cars')
 }
-
 const createCarSuccess = function (response) {
   const displayMessage = (`<div id='car-${response.car.id}' style='clear:left; border: solid black 2px; display: inline-block; padding: 10px; margin: 5px;'><p><b>Car ID:</b> ${response.car.id}</p>
                             <p><b>Car Model:</b> ${response.car.model}</p>
@@ -94,7 +90,7 @@ const createCarSuccess = function (response) {
                              <p><b>Car Color:</b> ${response.car.color}</p>
                              <p><b>Car Problem:</b> ${response.car.problem}</p>
                              <button class="remove-car btn btn-primary" id='${response.car.id}'>Delete</button>
-                             <button class="update-car btn btn-primary" id='${response.car.id}'>Edit</button>
+                             <button class="update-car btn btn-primary" id='${response.car.id}'>Update</button>
                              </div>`)
   $('#list').append(displayMessage)
   $('.remove-car').on('click', onDeleteCar)
@@ -103,7 +99,7 @@ const createCarSuccess = function (response) {
 }
 
 const createCarFailure = function (response) {
-  $('#status-message').html('Unable to add car')
+  $('#status-message').html('Car successfully added')
 }
 
 const signUpSuccess = function (response) {
@@ -112,6 +108,7 @@ const signUpSuccess = function (response) {
 
 const signUpFailure = function (response) {
   $('#status-message').html('Sign Up Failure')
+  // $('#messageStatus').html('Sign up unsucessful, please try again!')
 }
 
 const signInSuccess = function (response) {
@@ -119,24 +116,25 @@ const signInSuccess = function (response) {
   $('#status-message').html('Sign In Success')
   $('#sign-in-form').hide()
   $('#sign-up-form').hide()
-  $('#change-password-form').show()
   $('#sign-out').show()
   $('#show-cars').show()
   $('#create-car-form').show()
-  $('#sign-up-form').hide()
-  $('#show-cars').show()
+  $('#change-password-link').show()
 }
 
 const signInFailure = function (response) {
   $('#status-message').html('Sign In Failure')
+  // $('#messageStatus').html('Sign in error, try again!')
 }
 
 const changePasswordSuccess = function (response) {
-  $('#status-message').html('Change Password Successful')
+  $('#status-message').html('Change Password Success')
+  $('#change-password-form').hide()
+  $('#create-car-form').show()
 }
 
 const changePasswordFailure = function (response) {
-  $('#status-message').html('Change Password Failure')
+  $('#status-message').html('Sign In Failure')
 }
 
 const signOutSuccess = function (response) {
@@ -148,6 +146,7 @@ const signOutSuccess = function (response) {
   $('#sign-out').hide()
   $('#show-cars').hide()
   $('#create-car-form').hide()
+  $('#change-password-link').hide()
   $('#list').html('')
   $('#update-car-form').hide()
 }
@@ -157,7 +156,7 @@ const signOutFailure = function (response) {
 }
 
 const deleteCarSuccess = function (carID) {
-  $('#status-message').html('Car Deleted')
+  $('#status-message').html('Car successfully deleted')
   $('#car-' + carID).remove()
 }
 

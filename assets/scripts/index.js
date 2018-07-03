@@ -13,9 +13,24 @@ $(() => {
   $('#sign-out').on('click', events.onSignOut)
   $('#create-car-form').on('submit', events.onCreateCar)
   $('#show-cars').on('click', events.onShowCars)
+  $('#show-cars').on('click', function () {
+    $('#status-message').html('Your car list:')
+  })
   $('#update-car-form').on('submit', events.onUpdateCar)
   $('#sign-up-link').on('click', function () {
+    document.getElementById('change-password-form').reset()
+    document.getElementById('create-car-form').reset()
+    document.getElementById('update-car-form').reset()
     $('#sign-up-form').show()
+  })
+  $('#change-password-link').on('click', function () {
+    $('#list').html('')
+    $('#change-password-form').show()
+    $('#create-car-form').hide()
+    $('#status-message').html('Change your password')
+    document.getElementById('change-password-form').reset()
+    document.getElementById('create-car-form').reset()
+    document.getElementById('update-car-form').reset()
   })
 }
 )
