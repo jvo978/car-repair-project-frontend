@@ -8,16 +8,33 @@ $gray: #d3d3d3;
 $blueflame: #3e65c0;
 $rust: #b7410e;
 $dark-gray: #333;
+$padding: 10px;
+$display-block: inline-block;
+$margin: 5px;
+$div-border: solid $rust 2px;
+$clear-left: left;
+$max-width: 200px;
 
 .nav-bar {
   background-color: $dark-gray;
-  // border-bottom: solid 2px $white;
   height: 45px;
   margin-bottom: 10px;
 }
 
+.div-background-color {
+  background-color: $black;
+  border: $div-border;
+  clear: $clear-left;
+  color: $white;
+  display: $display-block;
+  margin: $margin;
+  max-width: $max-width;
+  padding: $padding;
+}
+
 .message {
-  color: $black;
+  background-color: $black;
+  color: $white;
   float: left;
   font-size: 25px;
 }
@@ -62,10 +79,6 @@ a {
 label {
   color: $gray;
 }
-//
-// .modal-body {
-//   height: 100px;
-// }
 
 form {
   background-color: $black;
@@ -85,9 +98,9 @@ button {
 }
 
 body {
-  // background: url('../../assets/images/engine.jpg');
-  // background-repeat: no-repeat;
-  // background-size: cover;
+  background: url('../../assets/images/engine.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
 }
 //
