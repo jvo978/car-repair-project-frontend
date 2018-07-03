@@ -16,7 +16,7 @@ const onUpdateCar = function (event) {
 const onShowCars = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  // console.log(data)
+
   api.showCars(data)
     .then(ui.showCarsSuccess)
     .catch(ui.showCarsFailure)
