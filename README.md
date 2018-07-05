@@ -25,7 +25,7 @@ https://github.com/jvo978/car-repair-project-frontend
 <p>This respository is the front end of this application. This is the client experience where an action by the client will target an event handler. The event will then make a ajax request to the back end of this application where it handles all the data and retrieves it for the user to see. Everything here revolves around the users view, but without the backend portion user will not be able to view the data collected or added.</p>
 
 <h2>Deployed sites</h2>
-https://jvo978.github.io/car-repair-project-frontend/
+https://jvo978.github.io/car-repair-project-frontend/ <br />
 https://cars-repair-project-api.herokuapp.com/
 
 <h2>What technologies were used:</h2>
