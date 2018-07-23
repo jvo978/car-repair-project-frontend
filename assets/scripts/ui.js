@@ -19,7 +19,10 @@ const createCarSuccess = function (response) {
 
 const showCarsSuccess = function (response) {
   $('#list').html('')
-  for (let i = 0; i < response.cars.length; i++) {
+  if (response.cars.length === 0) {
+    $('#status-message').html('You have no cars in your inventory')
+  }
+  for (let i = 0; i < response.c  .then(onShowCars)ars.length; i++) {
     const displayMessage = (`<div id='car-${response.cars[i].id}' class='div-background-color' style='max-length:150px;'><p><b>Car ID:</b>${response.cars[i].id}</p>
     <p><b>Car Model:</b>${response.cars[i].model}</p>
     <p><b>Car Make:</b>${response.cars[i].make}</p>
@@ -134,7 +137,7 @@ const changePasswordSuccess = function (response) {
 }
 
 const changePasswordFailure = function (response) {
-  $('#status-message').html('Sign In Failure')
+  $('#status-message').html('Change Password Failure')
 }
 
 const signOutSuccess = function (response) {
