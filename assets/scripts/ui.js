@@ -12,6 +12,7 @@ const createCarSuccess = function (response) {
   <button class="remove-car btn btn-danger" id='${response.car.id}'>Delete</button>
   </div>`)
   $('#list').append(displayMessage)
+  $('#createCarModal').modal('hide')
   $('.remove-car').on('click', onDeleteCar)
   $('.update-car').on('click', onShowCar)
   $('#status-message').html('Car successfully added')
@@ -22,7 +23,7 @@ const showCarsSuccess = function (response) {
   if (response.cars.length === 0) {
     $('#status-message').html('You have no cars in your inventory')
   }
-  for (let i = 0; i < response.c  .then(onShowCars)ars.length; i++) {
+  for (let i = 0; i < response.cars.length; i++) {
     const displayMessage = (`<div id='car-${response.cars[i].id}' class='div-background-color' style='max-length:150px;'><p><b>Car ID:</b>${response.cars[i].id}</p>
     <p><b>Car Model:</b>${response.cars[i].model}</p>
     <p><b>Car Make:</b>${response.cars[i].make}</p>
@@ -33,17 +34,16 @@ const showCarsSuccess = function (response) {
     <button class="remove-car btn btn-danger" id='${response.cars[i].id}'>Delete</button>
     </div>`)
     $('#list').append(displayMessage)
+    $('#status-message').html('Your car inventory: ')
   }
   $('.remove-car').on('click', onDeleteCar)
   $('.update-car').on('click', onShowCar)
-  $('#change-password-form').hide()
-  $('#create-car-form').hide()
+  // $('#change-password-form').hide()
+  // $('#create-car-form').hide()
 }
 
 const showCarSuccess = function (response) {
-  $('#status-message').html('Update your car in the form')
-  $('#create-car-form').hide()
-  $('#update-car-form').show()
+  $('#updateCarModal').modal('show')
   $('#model').val(response.car.model)
   $('#make').val(response.car.make)
   $('#year').val(response.car.year)
@@ -55,8 +55,8 @@ const showCarSuccess = function (response) {
 
 const updateCarSuccess = function (response) {
   $('#status-message').html('Car successfully updated')
-  $('#update-car-form').hide()
-  $('#create-car-form').hide()
+  $('#updateCarModal').modal('hide')
+  // $('#create-car-form').hide()
   const updatedCar = (`<p><b>Car ID:</b>${response.car.id}</p>
     <p><b>Car Model:</b>${response.car.model}</p>
     <p><b>Car Make:</b>${response.car.make}</p>
@@ -65,10 +65,10 @@ const updateCarSuccess = function (response) {
     <p><b>Car Problem:</b>${response.car.problem}</p>
     <button class="update-car btn btn-primary" id='${response.car.id}'>Update</button>
     <button class="remove-car btn btn-danger" id='${response.car.id}'>Delete</button>`)
-  const carUpdated = $('#car-' + response.car.id).html(updatedCar)
-  $('#list').append(carUpdated)
+  const carUpdated = $('#car-' + response.car.id).append(updatedCar)
   $('.remove-car').on('click', onDeleteCar)
   $('.update-car').on('click', onShowCar)
+  $('#list').html(carUpdated)
 }
 
 const updateCarFailure = function (response) {
@@ -89,9 +89,6 @@ const onDeleteCar = function (event) {
   api.deleteCar(carID)
     .then(deleteCarSuccess(carID))
     .catch(deleteCarFailure)
-  document.getElementById('change-password-form').reset()
-  document.getElementById('create-car-form').reset()
-  document.getElementById('update-car-form').reset()
 }
 
 const showCarFailure = function (response) {
@@ -107,52 +104,40 @@ const createCarFailure = function (response) {
 }
 
 const signUpSuccess = function (response) {
+  $('#signUpModal').modal('hide')
   $('#status-message').html('Sign Up Success')
 }
 
 const signUpFailure = function (response) {
-  $('#status-message').html('Sign Up Failure')
+  $('#signUpModalLabel').html('Sign Up Failure, Try Again!')
 }
 
 const signInSuccess = function (response) {
   store.user = response.user
-  $('#status-message').html('Sign In Success')
-  $('#sign-in-form').hide()
-  $('#sign-up-form').hide()
-  $('#sign-out').show()
-  $('#show-cars').show()
-  $('#create-car-form').show()
-  $('#change-password-link').show()
+  $('#signInModal').modal('hide')
+  $('#status-message').html('Sign In Successful')
+  $('.display-none').show()
+  $('.display').hide()
 }
 
 const signInFailure = function (response) {
-  $('#status-message').html('Sign In Failure')
-  // $('#messageStatus').html('Sign in error, try again!')
+  $('#signInModalLabel').html('Sign In Failure, Try again!')
 }
 
 const changePasswordSuccess = function (response) {
   $('#status-message').html('Change Password Success')
-  $('#change-password-form').hide()
-  $('#create-car-form').show()
+  $('#changePasswordModal').modal('hide')
 }
 
 const changePasswordFailure = function (response) {
-  $('#status-message').html('Change Password Failure')
+  $('#changePasswordModalLabel').html('Change Password Failure, Try again!')
 }
 
 const signOutSuccess = function (response) {
   delete store.user
   $('#status-message').html('Sign Out Success')
-  $('#sign-in-form').show()
-  $('#sign-up-form').show()
-  $('#change-password-form').hide()
-  $('#sign-out').hide()
-  $('#show-cars').hide()
-  $('#create-car-form').hide()
-  $('#change-password-link').hide()
-  $('#list').html('')
-  $('#update-car-form').hide()
-  $('#add-car-link').hide()
+  $('.display-none').hide()
+  $('.display').show()
 }
 
 const signOutFailure = function (response) {
