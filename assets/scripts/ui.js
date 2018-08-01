@@ -2,6 +2,7 @@ const store = require('./store')
 const api = require('./api')
 
 const createCarSuccess = function (response) {
+  $('#list').html('')
   const displayMessage = (`<div id='car-${response.car.id}' class='div-background-color' style='max-length:150px;'><p><b>Car ID:</b> ${response.car.id}</p>
   <p><b>Car Model:</b> ${response.car.model}</p>
   <p><b>Car Make:</b> ${response.car.make}</p>
@@ -57,18 +58,18 @@ const updateCarSuccess = function (response) {
   $('#status-message').html('Car successfully updated')
   $('#updateCarModal').modal('hide')
   // $('#create-car-form').hide()
-  const updatedCar = (`<p><b>Car ID:</b>${response.car.id}</p>
-    <p><b>Car Model:</b>${response.car.model}</p>
-    <p><b>Car Make:</b>${response.car.make}</p>
-    <p><b>Car Model:</b>${response.car.year}</p>
-    <p><b>Car Color:</b>${response.car.color}</p>
-    <p><b>Car Problem:</b>${response.car.problem}</p>
-    <button class="update-car btn btn-primary" id='${response.car.id}'>Update</button>
-    <button class="remove-car btn btn-danger" id='${response.car.id}'>Delete</button>`)
-  const carUpdated = $('#car-' + response.car.id).append(updatedCar)
+  // const updatedCar = (`<p><b>Car ID:</b>${response.car.id}</p>
+  //   <p><b>Car Model:</b>${response.car.model}</p>
+  //   <p><b>Car Make:</b>${response.car.make}</p>
+  //   <p><b>Car Model:</b>${response.car.year}</p>
+  //   <p><b>Car Color:</b>${response.car.color}</p>
+  //   <p><b>Car Problem:</b>${response.car.problem}</p>
+  //   <button class="update-car btn btn-primary" id='${response.car.id}'>Update</button>
+  //   <button class="remove-car btn btn-danger" id='${response.car.id}'>Delete</button>`)
+  // const carUpdated = $('#car-' + response.car.id).append(updatedCar)
   $('.remove-car').on('click', onDeleteCar)
   $('.update-car').on('click', onShowCar)
-  $('#list').html(carUpdated)
+  // $('#list').html(carUpdated)
 }
 
 const updateCarFailure = function (response) {

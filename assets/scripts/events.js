@@ -7,7 +7,7 @@ const onUpdateCar = function (event) {
   const data = getFormFields(event.target)
   api.updateCar(data)
     .then(ui.updateCarSuccess)
-    .then(() => onShowCars)
+    .then(() => onShowCars(event))
     .catch(ui.updateCarFailure)
 }
 
@@ -24,6 +24,7 @@ const onCreateCar = function (event) {
   const data = getFormFields(event.target)
   api.createCar(data)
     .then(ui.createCarSuccess)
+    .then(() => onShowCars(event))
     .catch(ui.createCarFailure)
 }
 
