@@ -3,7 +3,7 @@ const api = require('./api')
 
 const createCarSuccess = function (response) {
   $('#list').html('')
-  const displayMessage = (`<div id='car-${response.car.id}' class='div-background-color' style='max-length:150px;'><p><b>Car ID:</b> ${response.car.id}</p>
+  const displayMessage = (`<div id='car-${response.car.id}' class='div-background-color' style='max-length:150px;'>
   <p><b>Car Model:</b> ${response.car.model}</p>
   <p><b>Car Make:</b> ${response.car.make}</p>
   <p><b>Car Year:</b> ${response.car.year}</p>
@@ -25,7 +25,7 @@ const showCarsSuccess = function (response) {
     $('#status-message').html('You have no cars in your inventory')
   }
   for (let i = 0; i < response.cars.length; i++) {
-    const displayMessage = (`<div id='car-${response.cars[i].id}' class='div-background-color' style='max-length:150px;'><p><b>Car ID:</b>${response.cars[i].id}</p>
+    const displayMessage = (`<div id='car-${response.cars[i].id}' class='div-background-color' style='max-length:150px;'>
     <p><b>Car Model:</b>${response.cars[i].model}</p>
     <p><b>Car Make:</b>${response.cars[i].make}</p>
     <p><b>Car Year:</b>${response.cars[i].year}</p>
@@ -116,7 +116,7 @@ const signUpFailure = function (response) {
 const signInSuccess = function (response) {
   store.user = response.user
   $('#signInModal').modal('hide')
-  $('#status-message').html('Sign In Successful')
+  $('#status-message').html('Welcome ' + store.user.email + '!')
   $('.display-none').show()
   $('.display').hide()
 }
