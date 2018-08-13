@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Auto Repair Tracker</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <div class="topnav"> Auto Repair Tracker </div>
+    <!-- <div class=nav-bar>
+      <ul>
+        <li><a style='display:none;' id='show-cars'>My Cars</a></li>
+        <li><a style='display:none;' id="sign-out">Sign Out</a></li>
+        <li><a style='display:none;' id="sign-in-link">Sign In</a></li>
+        <li><a style='display:none;' id='sign-up-link'>Sign Up</a></li>
+        <li><a style='display:none;' id='change-password-link'>Change Password</a></li>
+        <li><a style='display:none;' id="add-car-link">Add Car</a></li>
+      </ul>
+    </div> -->
+      <!-- <img alt="" src="assets/images/engine.jpg"> -->
+<!-- <div id='status-message' class=message></div> -->
+
+<div id='status-message' class='message'></div>
+
+<!-- Button trigger modal -->
+<button id='sign-out' class="clear-inventory display-none clear-forms float-right btn btn-primary" type='button'>Sign Out</button>
+<button type="button" class="display clear-forms float-right btn btn-primary" data-toggle="modal" data-target="#signUpModal">
+  Sign Up
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signUpModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id='sign-up-form'>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input name='credentials[email]' type="email" class="form-control" placeholder="Enter Email">
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input name='credentials[password]' type="password" class="form-control" placeholder="Password">
+          </div>
+
+          <div class="form-group">
+            <label>Password Confirmation</label>
+            <input name='credentials[password_confirmation]' type="password" class="form-control" placeholder="Password Confirmation">
+          </div>
+          <button type='submit' class="btn btn-primary">Sign Up</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="display clear-forms float-right btn btn-primary" data-toggle="modal" data-target="#signInModal">
+        Sign In
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="signInModalLabel"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id='sign-in-form'>
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <input name='credentials[email]' type="email" class="form-control" placeholder="Enter Email">
+                </div>
+
+                <div class="form-group">
+                  <label>Password</label>
+                  <input name='credentials[password]' type="password" class="form-control" placeholder="Password">
+                </div>
+                <button class="btn btn-primary" type='submit'>Sign In</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="clear-inventory display-none clear-forms float-right btn btn-primary" data-toggle="modal" data-target="#changePasswordModal">
+        Change Password
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="changePasswordlModalLabel"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id='change-password-form'>
+                <div class="form-group">
+                  <label>Old Password</label>
+                  <input name='passwords[old]' type="password" class="form-control" placeholder="Old Password">
+                </div>
+
+                <div class="form-group">
+                  <label>New Password</label>
+                  <input name='passwords[new]' type="password" class="form-control" placeholder="New Password">
+                </div>
+                <button class="btn btn-primary" type='submit'>Change Password</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="clear-inventory display-none clear-forms float-right btn btn-primary" data-toggle="modal" data-target="#createCarModal">
+        Create Car
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="createCarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="createCarModalLabel"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id='create-car-form'>
+                <div class="form-group">
+                  <label>Car Model</label>
+                  <input name='car[model]' type="text" class="form-control" placeholder="Model" required>
+                </div>
+
+                <div class="form-group">
+                  <label>Car Make</label>
+                  <input name='car[make]' type="text" class="form-control" placeholder="Make" required>
+                </div>
+
+                <div class="form-group">
+                  <label>Car Year</label>
+                  <input name='car[year]' type="number" class="form-control" placeholder="Year" min=1980 max=2018 required>
+                </div>
+
+                <div class="form-group">
+                  <label>Car Color</label>
+                  <input name='car[color]' type="text" class="form-control" placeholder="Color" required>
+                </div>
+
+                <div class="form-group">
+                  <label>Car Problem</label>
+                  <input name='car[problem]' type="text" class="form-control" placeholder="Problem" required>
+                </div>
+                <button class="btn btn-primary" type='submit'>Create Car</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id='show-cars' class="display-none clear-forms float-right btn btn-primary" type='button'>My Cars</button>
+
+
+
+      <div class="modal fade" id="updateCarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="updateCarModalLabel"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+      <form id='update-car-form'>
+        <div class="form-group">
+          <label>Car Model</label>
+          <input id='model' name='car[model]' type="text" class="form-control" placeholder="Model" required>
+        </div>
+
+        <div class="form-group">
+          <label>Car Make</label>
+          <input id='make' name='car[make]' type="text" class="form-control" placeholder="Make" required>
+        </div>
+
+        <div class="form-group">
+          <label>Car Year</label>
+          <input id='year' name='car[year]' type="number" class="form-control" placeholder="Year" min=1980 max=2018 required>
+        </div>
+
+        <div class="form-group">
+          <label>Car Color</label>
+          <input id='color' name='car[color]' type="text" class="form-control" placeholder="Color" required>
+        </div>
+
+        <div class="form-group">
+          <label>Car Problem</label>
+          <input id='problem' name='car[problem]' type="text" class="form-control" placeholder="Problem" required>
+        </div>
+
+        <div class="form-group">
+          <input id='carID' name='car[carID]' type="hidden" class="form-control">
+        </div>
+        <button class="btn btn-primary" type='submit'>Update Car</button>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+<!-- <button id='show-cars' class="display-none clear-forms float-right btn btn-primary" type='button'>Update Car</button> -->
+          <div class='clear-left' id="list"></div>
+    </body>
+</html>
